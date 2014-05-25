@@ -20,6 +20,11 @@ func main() {
     fmt.Println(err)
   }
 
+  fmt.Println(result.Username)
+  fmt.Println(result.Password)
+  fmt.Println(result.Host)
+  fmt.Println(result.Port)
+
   fmt.Println(result)
 }
 ```
