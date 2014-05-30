@@ -13,18 +13,17 @@ type RedisURL struct {
 }
 
 func Parse(redis_url string) (RedisURL, error) {
-
 	u, err := url.Parse(redis_url)
 	if err != nil {
 		return RedisURL{}, err
 	}
-	//redis_url := "redis://redistogo:64cfea0093507536a374ab6ad40f8463@angelfish.redistogo.com:10059/"
+
 	result := strings.Split(u.Host, ":")
 	if err != nil {
 		return RedisURL{}, err
 	}
-	username := u.User.Username()
-	password, _ := u.User.Password()
+
+	username, password := getUsernameAndPassword(u.User)
 	host := result[0]
 	port := result[1]
 
@@ -34,4 +33,16 @@ func Parse(redis_url string) (RedisURL, error) {
 	}
 
 	return ru, nil
+}
+
+func getUsernameAndPassword(user *url.Userinfo) (string, string) {
+	var username string
+	var password string
+
+	if user != nil {
+		username = user.Username()
+		password, _ = user.Password()
+	}
+
+	return username, password
 }
