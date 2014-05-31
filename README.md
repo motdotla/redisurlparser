@@ -2,6 +2,8 @@
 
 Redis url parser is a go library for parsing redis://.. URLs into struct friendly options.
 
+[![BuildStatus](https://travis-ci.org/scottmotte/redisurlparser.png?branch=master)](https://travis-ci.org/scottmotte/redisurlparser)
+
 ## Example
 
 ```
